@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akses Kelas - Integrated Learning Management System</title>
+    <title>Akses Kelas - Integrated LMS Portal</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome untuk Ikon Premium -->
+    <!-- FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Font: Plus Jakarta Sans -->
+    <!-- Google Font: Plus Jakarta Sans & Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -19,19 +19,24 @@
                 extend: {
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
                     },
                     colors: {
-                        brandDark: '#0f172a',
-                        accentRed: '#e11d48',
-                        accentCoral: '#fb7185',
-                        brandLight: '#f8fafc',
+                        brandDark: '#0f172a',       
+                        brandCardLight: '#ffffff',  
+                        accentRed: '#e11d48',       
+                        accentCoral: '#fb7185',     
+                        brandLight: '#f8fafc',      
+                        brandMuted: '#64748b'       
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Desain scrollbar kustom yang tipis dan modern */
+        .transition-all-300 {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -46,42 +51,53 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #fb7185;
         }
+        
+        @keyframes orbitFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.03); }
+        }
+        .glow-orb-1 {
+            animation: orbitFloat 8s infinite ease-in-out;
+            background: radial-gradient(circle, rgba(225, 29, 72, 0.08) 0%, transparent 70%);
+        }
+        .glow-orb-2 {
+            animation: orbitFloat 12s infinite ease-in-out alternate;
+            background: radial-gradient(circle, rgba(251, 113, 133, 0.06) 0%, transparent 70%);
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen font-sans flex flex-col antialiased overflow-x-hidden">
+<body class="bg-slate-50 min-h-screen text-slate-800 font-sans flex flex-col antialiased overflow-x-hidden">
 
     <!-- ========================================================== -->
-    <!-- SCREEN 1: LOGIN PORTAL (Premium White Glassmorphism Design) -->
+    <!-- STATE 1: RE-DESIGNED CENTERED ELEGANT LOGIN COVER (SSO) -->
     <!-- ========================================================== -->
-    <div id="login-screen" class="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-tr from-[#fafafb] via-[#fff1f2] to-[#f8fafc] relative px-4 py-12 transition-all duration-300">
+    <div id="login-screen" class="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-tr from-[#fafafb] via-[#fff1f2] to-[#f8fafc] relative px-4 py-12 transition-all-300">
         
-        <!-- Ornamen Pendar Cahaya Latar Belakang -->
-        <div class="absolute top-[10%] left-[15%] w-72 h-72 bg-rose-500/5 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-[10%] right-[15%] w-80 h-80 bg-rose-400/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#e11d4803_1px,transparent_1px),linear-gradient(to_bottom,#e11d4803_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
+        <div class="absolute top-[10%] left-[15%] w-[400px] h-[400px] glow-orb-1 rounded-full pointer-events-none z-0"></div>
+        <div class="absolute bottom-[10%] right-[15%] w-[450px] h-[450px] glow-orb-2 rounded-full pointer-events-none z-0"></div>
 
-        <!-- Lencana Melayang -->
         <div class="mb-6 relative z-10 animate-bounce" style="animation-duration: 4s;">
             <div class="bg-white/95 border border-rose-100 rounded-full px-4 py-1.5 flex items-center gap-2 shadow-sm backdrop-blur-md">
                 <span class="w-2 h-2 rounded-full bg-accentRed animate-pulse"></span>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 font-mono">LMS Terintegrasi v3.0</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600 font-mono">Platform LMS Terintegrasi v3.0</span>
             </div>
         </div>
 
-        <!-- Kartu Masuk Utama -->
-        <div class="bg-white/90 border border-rose-100 backdrop-blur-xl rounded-2xl w-full max-w-md p-8 md:p-10 shadow-xl shadow-rose-100/40 relative z-10 transition-all hover:shadow-2xl hover:border-accentRed/20">
+        <div class="bg-white/90 border border-rose-100 backdrop-blur-xl rounded-2xl w-full max-w-md p-8 md:p-10 shadow-xl shadow-rose-100/40 relative z-10 transition-all-300 hover:shadow-2xl hover:border-accentRed/20">
             
-            <!-- Logo Portal -->
             <div class="flex flex-col items-center text-center mb-8">
-                <div class="bg-gradient-to-tr from-accentRed to-accentCoral p-3.5 rounded-2xl shadow-lg shadow-accentRed/20 mb-4 text-white">
-                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                <div class="bg-gradient-to-tr from-accentRed to-accentCoral p-3.5 rounded-2xl shadow-lg shadow-accentRed/20 mb-4 transform hover:rotate-12 transition-all-300 text-white">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.180 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                    </svg>
                 </div>
-                <h2 class="font-bold text-2xl tracking-tight text-slate-900 leading-none">
+                <h2 class="font-display font-extrabold text-2xl tracking-tight text-slate-900 leading-none">
                     AKSES<span class="text-accentRed">KELAS</span>
                 </h2>
-                <p class="text-[9px] text-accentRed font-mono uppercase tracking-widest font-extrabold mt-1.5">Portal Kejujuran Akademis</p>
+                <p class="text-[9px] text-accentRed font-mono uppercase tracking-widest font-extrabold mt-1.5">Integrated Learning Management System</p>
             </div>
 
-            <!-- Formulir Input -->
             <div class="space-y-6">
                 <div class="space-y-1 text-center">
                     <h1 class="text-xl font-bold tracking-tight text-slate-800 leading-tight">Mulai Belajar Jujur</h1>
@@ -89,287 +105,342 @@
                 </div>
 
                 <div class="space-y-4">
-                    <!-- Input Username -->
                     <div>
                         <label class="block text-[10px] font-extrabold text-slate-500 uppercase tracking-wider mb-2">Username Akademik</label>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
                                 <i class="fa-solid fa-user-graduate text-xs"></i>
                             </span>
-                            <input type="text" id="login-username" value="aditya.wijaya" class="w-full bg-slate-50 text-sm rounded-xl border border-slate-200 pl-10 pr-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none text-slate-800 font-medium transition-all">
+                            <input type="text" id="login-username" value="aditya.wijaya" class="w-full bg-slate-50 text-sm rounded-xl border border-slate-200 pl-10 pr-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none text-slate-800 font-medium transition-all-300">
                         </div>
                     </div>
 
-                    <!-- Input Kata Sandi -->
                     <div>
                         <div class="flex justify-between items-center mb-2">
                             <label class="block text-[10px] font-extrabold text-slate-500 uppercase tracking-wider">Kata Sandi</label>
-                            <a href="#" class="text-[10px] text-accentRed hover:text-accentCoral transition-all font-medium">Lupa Sandi?</a>
+                            <a href="#" class="text-[10px] text-accentRed hover:text-accentCoral transition-all-300 font-medium">Lupa Sandi?</a>
                         </div>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
                                 <i class="fa-solid fa-lock text-xs"></i>
                             </span>
-                            <input type="password" id="login-password" value="••••••••••••" class="w-full bg-slate-50 text-sm rounded-xl border border-slate-200 pl-10 pr-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none text-slate-800 font-medium transition-all">
+                            <input type="password" id="login-password" value="••••••••••••" class="w-full bg-slate-50 text-sm rounded-xl border border-slate-200 pl-10 pr-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none text-slate-800 font-medium transition-all-300">
                         </div>
                     </div>
                 </div>
 
-                <!-- Tombol Submit -->
-                <button onclick="handleLogin()" class="w-full py-3.5 bg-gradient-to-r from-accentRed to-accentCoral hover:from-accentCoral hover:to-accentRed text-white font-bold rounded-xl text-xs shadow-lg shadow-accentRed/15 hover:shadow-accentCoral/25 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+                <button onclick="handleLogin()" class="w-full py-3.5 bg-gradient-to-r from-accentRed to-accentCoral hover:from-accentCoral hover:to-accentRed text-white font-bold rounded-xl text-xs shadow-lg shadow-accentRed/15 hover:shadow-accentCoral/25 transition-all-300 transform active:scale-[0.98] flex items-center justify-center gap-2">
                     Masuk Portal <i class="fa-solid fa-circle-arrow-right text-xs"></i>
                 </button>
             </div>
 
-            <!-- Catatan Kaki Bantuan -->
             <div class="mt-6 pt-4 border-t border-slate-100 text-center">
                 <p class="text-[10px] text-slate-500 leading-relaxed">
-                    Butuh bantuan akses? Hubungi tim support IT di <span class="text-accentRed font-semibold">helpdesk@akseskelas.net</span>
+                    Butuh bantuan akses? Kontak admin melalui <span class="text-accentRed font-semibold">helpdesk@akseskelas.net</span>
                 </p>
             </div>
         </div>
 
-        <div class="mt-12 font-mono text-[9px] text-slate-400 text-center">
+        <div class="mt-8 grid grid-cols-3 gap-4 max-w-md w-full text-center relative z-10">
+            <div class="p-3 bg-white/80 rounded-2xl border border-slate-100 backdrop-blur-sm shadow-sm transition-all-300 hover:border-rose-200">
+                <i class="fa-solid fa-layer-group text-accentRed mb-1.5 text-base"></i>
+                <p class="font-extrabold text-[10px] text-slate-800">LMS UTAMA</p>
+                <p class="text-[8.5px] text-slate-500 mt-0.5">Materi &amp; Tugas</p>
+            </div>
+            <div class="p-3 bg-white/80 rounded-2xl border border-slate-100 backdrop-blur-sm shadow-sm transition-all-300 hover:border-rose-200">
+                <i class="fa-solid fa-shield-halved text-accentCoral mb-1.5 text-base"></i>
+                <p class="font-extrabold text-[10px] text-slate-800">VERIFY AI</p>
+                <p class="text-[8.5px] text-slate-500 mt-0.5">Validasi Jujur</p>
+            </div>
+            <div class="p-3 bg-white/80 rounded-2xl border border-slate-100 backdrop-blur-sm shadow-sm transition-all-300 hover:border-rose-200">
+                <i class="fa-solid fa-calendar-check text-accentRed mb-1.5 text-base"></i>
+                <p class="font-extrabold text-[10px] text-slate-800">KULIAH TERPADU</p>
+                <p class="text-[8.5px] text-slate-500 mt-0.5">Satu Akun SSO</p>
+            </div>
+        </div>
+
+        <div class="mt-12 font-mono text-[9px] text-slate-400 relative z-10 text-center">
             <span>AKSES KELAS SYSTEM • GEN-3 CORE ENGINE</span>
-            <p class="mt-1">Hak Cipta &copy; 2026. Seluruh Hak Cipta Dilindungi.</p>
+            <p class="mt-1">Hak Cipta &copy; 2026. Hak Cipta Dilindungi Undang-Undang.</p>
         </div>
     </div>
 
 
     <!-- ========================================================== -->
-    <!-- SCREEN 2: MAIN DASHBOARD (Fully Mobile Responsive & Premium) -->
+    <!-- STATE 2: DASHBOARD MAIN INTERIOR -->
     <!-- ========================================================== -->
-    <div id="dashboard-screen" class="hidden min-h-screen w-full flex-col bg-slate-50 text-slate-800 transition-all duration-300">
+    <div id="dashboard-screen" class="hidden min-h-screen w-full flex-col bg-slate-50 text-slate-800 transition-all-300">
         
-        <!-- Elegant Light Dashboard Header -->
-        <header class="bg-white text-slate-800 border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-            <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+        <header class="bg-white text-slate-800 border-b border-slate-200/80 sticky top-0 z-50 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 md:px-6 py-3.5 flex items-center justify-between">
                 
-                <!-- Brand Group & Mobile Hamburger Menu Button -->
-                <div class="flex items-center gap-3">
-                    <!-- Tombol Menu Hamburger Mobile -->
-                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-lg focus:outline-none cursor-pointer">
-                        <i class="fa-solid fa-bars text-sm"></i>
+                <div class="flex items-center gap-3.5">
+                    <button class="text-slate-400 hover:text-accentRed p-2 rounded-lg hover:bg-slate-100 transition-all-300">
+                        <i class="fa-solid fa-bars-staggered text-base"></i>
                     </button>
                     
-                    <div class="bg-gradient-to-tr from-accentRed to-accentCoral text-white p-2.5 rounded-xl shadow-md">
-                        <i class="fa-solid fa-shield-halved text-xs"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-bold text-base leading-none tracking-tight text-slate-900">AKSES<span class="text-accentRed">KELAS</span></h1>
-                        <p class="text-[8px] text-accentRed font-mono tracking-widest font-bold uppercase mt-0.5">Portal Mahasiswa</p>
+                    <div class="flex items-center gap-2.5">
+                        <div class="bg-gradient-to-tr from-accentRed to-accentCoral text-white p-2.5 rounded-xl shadow-md">
+                            <i class="fa-solid fa-shield-halved text-xs"></i>
+                        </div>
+                        <div>
+                            <h1 class="font-display font-extrabold text-base leading-none tracking-tight text-slate-900">AKSES<span class="text-accentRed">KELAS</span></h1>
+                            <p class="text-[8px] text-accentRed font-mono tracking-widest font-bold uppercase mt-0.5">Portal Mahasiswa</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Desktop Navigation Tabs (Perfect Match with Screenshot) -->
-                <nav class="hidden lg:flex items-center space-x-1 h-full">
-                    <a href="#" class="px-4 h-full flex items-center text-sm font-bold border-b-2 border-rose-500 text-rose-500 bg-rose-50/20 py-5">Dasbor Utama</a>
-                    <a href="#" class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-slate-800 hover:border-b-2 hover:border-slate-300 transition-all py-5">Mata Kuliah</a>
-                    <a href="#" class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-slate-800 hover:border-b-2 hover:border-slate-300 transition-all py-5">Riwayat Validasi</a>
-                    <a href="#" class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-slate-800 hover:border-b-2 hover:border-slate-300 transition-all py-5">Dokumentasi</a>
+                <nav class="hidden md:flex items-center gap-1.5 text-xs font-bold">
+                    <a href="#" class="px-3.5 py-2 text-accentRed border-b-2 border-accentRed">Dasbor Utama</a>
+                    <a href="#" class="px-3.5 py-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-all-300">Mata Kuliah</a>
+                    <a href="#" class="px-3.5 py-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-all-300">Riwayat Validasi</a>
+                    <a href="#" class="px-3.5 py-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-all-300">Dokumentasi</a>
                 </nav>
 
-                <!-- Profile and Logout -->
                 <div class="flex items-center gap-3">
-                    <div class="text-right hidden sm:block">
-                        <p class="text-xs font-bold text-slate-800 leading-tight" id="user-display-name">Aditya Wijaya</p>
-                        <p class="text-[9px] text-accentRed font-mono font-medium">NPM. 230608XXXX</p>
-                    </div>
-                    <div id="user-avatar" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-accentRed to-accentCoral text-white font-extrabold flex items-center justify-center border border-white shadow-md text-xs">
-                        AW
-                    </div>
-                    <button onclick="handleLogout()" class="text-slate-400 hover:text-red-600 p-2 rounded-lg hover:bg-red-50 transition-all cursor-pointer" title="Keluar">
-                        <i class="fa-solid fa-power-off text-xs"></i>
+                    <button class="text-slate-500 hover:text-slate-800 p-2 rounded-full relative hover:bg-slate-100 transition-all-300">
+                        <i class="fa-regular fa-bell text-base"></i>
+                        <span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-accentRed rounded-full animate-ping"></span>
                     </button>
+                    <button class="text-slate-500 hover:text-slate-800 p-2 rounded-full hover:bg-slate-100 transition-all-300">
+                        <i class="fa-regular fa-envelope text-base"></i>
+                    </button>
+                    
+                    <div class="flex items-center gap-2.5 pl-3 border-l border-slate-200">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-xs font-bold text-slate-800 leading-tight" id="user-display-name">Aditya Wijaya</p>
+                            <p class="text-[9px] text-accentRed font-mono font-medium">NPM. 230608XXXX</p>
+                        </div>
+                        <div id="user-avatar" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-accentRed to-accentCoral text-white font-extrabold flex items-center justify-center border border-white shadow-md text-xs">
+                            AW
+                        </div>
+                        <button onclick="handleLogout()" class="text-slate-400 hover:text-red-600 p-2 rounded-lg hover:bg-red-50 transition-all-300 ml-1" title="Log Out">
+                            <i class="fa-solid fa-power-off text-xs"></i>
+                        </button>
+                    </div>
                 </div>
 
-            </div>
-
-            <!-- Mobile Navigation Menu Dropdown (Hidden on Desktop, toggled via JS) -->
-            <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 pb-3 pt-2 px-4 space-y-1 bg-white">
-                <a href="#" class="block px-3 py-2 rounded-xl text-sm font-bold text-rose-500 bg-rose-50">Dasbor Utama</a>
-                <a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">Mata Kuliah</a>
-                <a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">Riwayat Validasi</a>
-                <a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">Dokumentasi</a>
-                <button onclick="handleLogout()" class="w-full text-left block px-3 py-2 rounded-xl text-sm font-medium text-rose-600 hover:bg-rose-50">Keluar Sistem</button>
             </div>
         </header>
 
-        <!-- Sub-Navigation Branded Ribbon -->
-        <div class="bg-gradient-to-r from-accentRed via-[#d9123c] to-accentCoral py-2.5 shadow-sm text-white">
-            <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-xs font-bold">
-                <div class="flex items-center gap-2">
-                    <span class="bg-white/20 px-2 py-0.5 rounded font-mono text-[9px]">SEMESTER GENAP 2025/2026</span>
-                    <span class="opacity-70">/</span>
+        <div class="bg-gradient-to-r from-accentRed via-[#d9123c] to-accentCoral py-2.5 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between text-white">
+                <div class="flex items-center gap-3 text-xs font-bold">
+                    <span class="bg-white/20 px-2.5 py-0.5 rounded font-mono text-[10px]">SEMESTER GENAP 2025/2026</span>
+                    <span>/</span>
                     <span class="opacity-95">Menulis Ilmiah 101 (Kelas TI-A)</span>
                 </div>
-                <div class="text-[9px] font-bold font-mono opacity-90">
+                <div class="text-[10px] font-bold font-mono hidden sm:block opacity-90">
                     SINKRONISASI AKTIF: <span id="current-timestamp">08/07/2026, 11:13 WIB</span>
                 </div>
             </div>
         </div>
 
-        <!-- Main Body Grid Layout (Auto responsive 1 column on Mobile, 3 columns on Laptop) -->
-        <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 md:py-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <main class="flex-grow max-w-7xl w-full mx-auto px-4 md:px-6 py-6 md:py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- LEFT AREA: Forms & Declarations (Spans 8 columns on large screens) -->
+            <!-- LEFT SECTION -->
             <section class="lg:col-span-8 space-y-6">
                 
-                <!-- Welcome Banner Card -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
                         <div class="bg-rose-50 text-accentRed text-[10px] font-bold px-2.5 py-1 rounded-full inline-block mb-2 uppercase tracking-wider border border-rose-100">
                             Akun Terverifikasi
                         </div>
-                        <h2 class="text-xl md:text-2xl font-bold tracking-tight text-slate-900 leading-none">Hi, <span id="welcome-name">Aditya Wijaya</span>! 👋</h2>
-                        <p class="text-xs text-slate-500 mt-1.5">Selesaikan pengisian bukti verifikasi draf esai Anda sebelum melakukan pengumpulan.</p>
+                        <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 leading-none">Hi, <span id="welcome-name">Aditya Wijaya</span>! 👋</h2>
+                        <!-- Generalised welcome banner text: fits broad LMS use-cases -->
+                        <p class="text-xs text-slate-500 mt-1.5">Selamat datang di platform Akses Kelas. Selesaikan pengisian instrumen verifikasi kejujuran akademik Anda di bawah ini.</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-100 px-4 py-3 rounded-xl flex items-center gap-3">
+                        <span class="text-accentRed text-2xl"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <div class="text-left">
+                            <p class="text-[9px] text-slate-400 font-bold uppercase leading-none font-mono">Fakultas</p>
+                            <p class="text-xs font-bold text-slate-800">Sains &amp; Teknologi</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Assignment Title Card -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-accentRed to-accentCoral"></div>
-                    <div class="pb-3 border-b border-slate-100">
-                        <span class="bg-accentRed text-white text-[9px] font-bold px-2 py-0.5 rounded font-mono uppercase">Tugas Mandiri</span>
-                        <h3 class="text-base md:text-lg font-bold text-slate-900 mt-1.5">Penulisan Esai Ilmiah: Integrasi AI &amp; Kode Etik Penulis</h3>
-                        <p class="text-xs text-slate-500">Dosen Pengampu: <span class="font-bold text-slate-700">Dr. Budiman Wibowo</span></p>
-                    </div>
-                    <p class="text-xs text-slate-600 leading-relaxed pt-3">
-                        Susunlah esai orisinal Anda mengenai batasan etis penggunaan kecerdasan buatan. Anda diwajibkan melengkapi kolom deklarasi <strong class="text-slate-800 font-semibold">Verify Sheet</strong> di bawah ini guna memverifikasi keabsahan klaim riset mandiri Anda.
-                    </p>
-                </div>
-
-                <!-- INPUT VERIFY SHEET FORM -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-accentRed to-accentCoral"></div>
                     
-                    <!-- Branded Form Header -->
-                    <div class="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 pb-4 border-b border-slate-100">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="bg-accentRed text-white text-[9px] font-bold px-2 py-0.5 rounded-md font-mono">TUGAS MANDIRI</span>
+                                <span class="text-[11px] text-slate-500 font-medium"><i class="fa-regular fa-clock mr-1"></i>Tenggat: 15 Juli 2026, 23:59 WIB</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900">Penulisan Esai Ilmiah: Integrasi AI &amp; Kode Etik Penulis</h3>
+                            <p class="text-xs text-slate-500 mt-1">Dosen Pengampu: <span class="font-bold text-slate-700">Dr. Budiman Wibowo</span></p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 text-xs text-slate-600 leading-relaxed space-y-2">
+                        <p class="font-bold text-slate-800 text-[13px]">Petunjuk Pengerjaan Tugas:</p>
+                        <p>Susunlah esai orisinal Anda mengenai batasan etis penggunaan kecerdasan buatan. Anda diperbolehkan berdiskusi dengan AI (seperti ChatGPT/Gemini/Claude). Namun, Anda wajib melengkapi <strong class="text-slate-800">Verify Sheet</strong> interaktif di bawah ini untuk mendeklarasikan orisinalitas riset mandiri Anda sebelum tombol serah tugas diaktifkan.</p>
+                    </div>
+                </div>
+
+
+                <!-- THE INTEGRATED VERIFY SHEET FORM -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    
+                    <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between border-b border-slate-200/10">
                         <div class="flex items-center gap-3">
-                            <span class="bg-gradient-to-tr from-accentRed to-accentCoral text-white w-8 h-8 rounded-lg flex items-center justify-center text-xs shadow-md">
+                            <span class="bg-gradient-to-tr from-accentRed to-accentCoral text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shadow-md">
                                 <i class="fa-solid fa-clipboard-check"></i>
                             </span>
                             <div>
-                                <h4 class="font-bold text-xs md:text-sm tracking-wide">VERIFY SHEET INTEGRITAS AI</h4>
-                                <p class="text-[9px] text-slate-300">Pernyataan Transparansi & Validasi Output AI</p>
+                                <h4 class="font-display font-bold text-sm tracking-wide text-white">VERIFY SHEET</h4>
+                                <p class="text-[10px] text-slate-300">Pernyataan Transparansi & Validasi Output AI</p>
                             </div>
                         </div>
-                        <span class="text-[9px] bg-slate-800 text-accentCoral font-mono px-2 py-0.5 rounded font-bold">AK-INTEGRITY</span>
+                        <span class="text-[9px] bg-slate-800 text-accentCoral font-mono px-2 py-0.5 rounded border border-slate-700 font-bold">AK-INTEGRITY</span>
                     </div>
 
-                    <!-- Fields Section -->
-                    <div class="p-5 md:p-6 space-y-6">
+                    <div class="p-6 space-y-6 bg-white">
                         
-                        <!-- Choice 1: Platform -->
-                        <div class="space-y-3">
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                                1. Jenis Kecerdasan Buatan (AI) yang Digunakan <span class="text-accentRed">*</span>
+                        <!-- 1. AI Platform Choice -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                                <span class="text-slate-800">1. Jenis Kecerdasan Buatan (AI) yang Digunakan</span> <span class="text-accentRed">*</span>
                             </label>
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                                <button onclick="togglePlatform('chatgpt')" id="btn-chatgpt" class="flex items-center gap-2 justify-center py-2 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all cursor-pointer">
+                            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                                <button onclick="togglePlatform('chatgpt')" id="btn-chatgpt" class="flex items-center gap-2.5 justify-center py-2.5 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all-300">
                                     <i class="fa-solid fa-circle-nodes text-[#10a37f]"></i> ChatGPT
                                 </button>
-                                <button onclick="togglePlatform('gemini')" id="btn-gemini" class="flex items-center gap-2 justify-center py-2 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all cursor-pointer">
+                                <button onclick="togglePlatform('gemini')" id="btn-gemini" class="flex items-center gap-2.5 justify-center py-2.5 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all-300">
                                     <i class="fa-solid fa-sparkles text-blue-500"></i> Gemini
                                 </button>
-                                <button onclick="togglePlatform('claude')" id="btn-claude" class="flex items-center gap-2 justify-center py-2 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all cursor-pointer">
+                                <button onclick="togglePlatform('claude')" id="btn-claude" class="flex items-center gap-2.5 justify-center py-2.5 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all-300">
                                     <i class="fa-solid fa-feather text-amber-600"></i> Claude
                                 </button>
-                                <button onclick="togglePlatform('lainnya')" id="btn-lainnya" class="flex items-center gap-2 justify-center py-2 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all cursor-pointer">
+                                <button onclick="togglePlatform('lainnya')" id="btn-lainnya" class="flex items-center gap-2.5 justify-center py-2.5 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all-300">
                                     <i class="fa-solid fa-ellipsis text-accentRed"></i> Lainnya
                                 </button>
                             </div>
-                            <div id="other-ai-container" class="hidden transition-all duration-300">
-                                <input type="text" id="other-ai-name" oninput="updateIntegrityScore()" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-2.5 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none bg-slate-50 transition-all" placeholder="Masukkan nama kecerdasan buatan (AI) lainnya...">
+
+                            <div id="other-ai-container" class="hidden mt-3 transition-all-300">
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1">Sebutkan nama kecerdasan buatan (AI) yang Anda gunakan:</label>
+                                <input type="text" id="other-ai-name" oninput="updateIntegrityScore()" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-2.5 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none text-slate-800 font-medium bg-slate-50 transition-all-300" placeholder="Contoh: Perplexity AI, DeepSeek, Mistral, dll.">
                             </div>
                         </div>
 
-                        <!-- Choice 2: Purpose -->
-                        <div class="space-y-3">
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                                2. Cakupan Hubungan Penggunaan AI <span class="text-[10px] text-slate-400 font-normal">(Bisa pilih lebih dari satu)</span>
+                        <!-- 2. Usage Purposes with 'Opsi Lainnya' write-in -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                                <span class="text-slate-800">2. Cakupan Hubungan Penggunaan AI</span> <span class="text-xs text-slate-400 font-normal capitalize">(Dapat dicentang lebih dari satu)</span>
                             </label>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="purpose-container">
-                                <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all bg-slate-50/40">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4 w-4 accent-rose-500">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-3" id="purpose-container">
+                                <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all-300 bg-slate-50/50">
+                                    <input type="checkbox" onchange="updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4.5 w-4.5">
                                     <div>
                                         <p class="text-xs font-bold text-slate-800">Menyusun Struktur Outline</p>
-                                        <p class="text-[9.5px] text-slate-500">Merumuskan batasan pembahasan & outline ide.</p>
+                                        <p class="text-[10px] text-slate-500">Merumuskan sub-pembahasan esai dan batasan penelitian awal.</p>
                                     </div>
                                 </label>
-                                <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all bg-slate-50/40">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4 w-4 accent-rose-500">
+                                <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all-300 bg-slate-50/50">
+                                    <input type="checkbox" onchange="updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4.5 w-4.5">
                                     <div>
-                                        <p class="text-xs font-bold text-slate-800">Brainstorming Sudut Pandang</p>
-                                        <p class="text-[9.5px] text-slate-500">Mencari inspirasi tema dan studi kasus penulisan.</p>
+                                        <p class="text-xs font-bold text-slate-800">Brainstorming Ide Dasar</p>
+                                        <p class="text-[10px] text-slate-500">Menelusuri sudut pandang menarik terkait etika digital.</p>
                                     </div>
                                 </label>
-                                <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all bg-slate-50/40">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4 w-4 accent-rose-500">
+                                <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all-300 bg-slate-50/50">
+                                    <input type="checkbox" onchange="updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4.5 w-4.5">
                                     <div>
-                                        <p class="text-xs font-bold text-slate-800">Penyuntingan &amp; EYD Baku</p>
-                                        <p class="text-[9.5px] text-slate-500">Memeriksa kesalahan ejaan & penyesuaian tata bahasa.</p>
+                                        <p class="text-xs font-bold text-slate-800">Penyuntingan &amp; Struktur Bahasa</p>
+                                        <p class="text-[10px] text-slate-500">Memeriksa struktur kalimat agar sesuai dengan kaidah EYD baku.</p>
                                     </div>
                                 </label>
-                                <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all bg-slate-50/40">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4 w-4 accent-rose-500">
+                                <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all-300 bg-slate-50/50">
+                                    <input type="checkbox" onchange="updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4.5 w-4.5">
                                     <div>
                                         <p class="text-xs font-bold text-slate-800">Klarifikasi Teori Sulit</p>
-                                        <p class="text-[9.5px] text-slate-500">Menyederhanakan penjelasan konsep yang abstrak.</p>
+                                        <p class="text-[10px] text-slate-500">Mempelajari rangkuman ringkas teori-teori filsafat teknologi.</p>
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all-300 bg-slate-50/50 sm:col-span-2">
+                                    <input type="checkbox" id="purpose-other-checkbox" onchange="togglePurposeOther(); updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4.5 w-4.5">
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-800">Opsi Lainnya (Tulis Mandiri)</p>
+                                        <!-- Replaced "kustom" with "AI" in descriptions -->
+                                        <p class="text-[10px] text-slate-500">Deklarasikan tujuan penggunaan AI di luar opsi di atas.</p>
                                     </div>
                                 </label>
                             </div>
-                        </div>
 
-                        <!-- Choice 3: Claims -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                                3. Klaim Keilmuan AI yang Perlu Diverifikasi <span class="text-accentRed">*</span>
-                            </label>
-                            <textarea id="claims-text" oninput="updateIntegrityScore()" rows="3" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none bg-slate-50/40 transition-all" placeholder="Tuliskan data, rujukan ilmiah, atau klaim teori dari respons AI yang menurut Anda paling rentan salah/halusinasi (Contoh: Klaim AI bahwa draf aturan rujukan UNESCO dirilis tahun 2021)..."></textarea>
-                        </div>
-
-                        <!-- Choice 4: Sources and Tautans -->
-                        <div class="space-y-3">
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                                4. Sumber Verifikasi & Tautan Rujukan Pembanding <span class="text-accentRed">*</span>
-                            </label>
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="sources-container">
-                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/40 select-none transition-all">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2 right-2 rounded text-accentRed focus:ring-accentRed h-4 w-4 accent-rose-500">
-                                    <span class="text-base text-accentRed"><i class="fa-solid fa-graduation-cap"></i></span>
-                                    <span class="text-[10px] font-bold text-slate-850 block">Google Scholar</span>
-                                </label>
-                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/40 select-none transition-all">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2 right-2 rounded text-accentRed focus:ring-accentRed h-4 w-4 accent-rose-500">
-                                    <span class="text-base text-accentRed"><i class="fa-solid fa-bookmark"></i></span>
-                                    <span class="text-[10px] font-bold text-slate-850 block">GARUDA</span>
-                                </label>
-                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/40 select-none transition-all">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2 right-2 rounded text-accentRed focus:ring-accentRed h-4 w-4 accent-rose-500">
-                                    <span class="text-base text-accentRed"><i class="fa-solid fa-award"></i></span>
-                                    <span class="text-[10px] font-bold text-slate-850 block">SINTA Jurnal</span>
-                                </label>
-                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/40 select-none transition-all">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2 right-2 rounded text-accentRed focus:ring-accentRed h-4 w-4 accent-rose-500">
-                                    <span class="text-base text-accentRed"><i class="fa-solid fa-book-open"></i></span>
-                                    <span class="text-[10px] font-bold text-slate-850 block">Buku Resmi</span>
-                                </label>
-                            </div>
-
-                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
-                                <h5 class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-link text-accentRed"></i> Tautan / DOI Dokumen Pendukung
-                                </h5>
-                                <textarea id="reference-links" oninput="updateIntegrityScore()" rows="2.5" class="w-full text-xs rounded-lg border border-slate-200 px-3 py-2 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none bg-white transition-all" placeholder="Tempel tautan atau nomor DOI literatur valid yang Anda jadikan pembanding (Contoh: https://doi.org/10.1016/j.compedu.2025.10512)..."></textarea>
+                            <div id="purpose-other-container" class="hidden mt-3 transition-all-300">
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1">Tuliskan tujuan penggunaan AI Anda:</label>
+                                <input type="text" id="purpose-other-text" oninput="updateIntegrityScore()" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-2.5 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none text-slate-800 font-medium bg-slate-50 transition-all-300" placeholder="Contoh: Membandingkan argumen pro dan kontra terkait regulasi AI...">
                             </div>
                         </div>
 
-                        <!-- Choice 5: Reflection -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                                5. Temuan Hasil Evaluasi Mandiri (Refleksi Temuan) <span class="text-accentRed">*</span>
+                        <!-- 3. Verified Claims -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
+                                    <span class="text-slate-800">3. Klaim Keilmuan AI yang Perlu Diverifikasi</span> <span class="text-accentRed">*</span>
+                                </label>
+                                <span class="text-[10px] text-slate-400 font-medium">Contoh: Rujukan tahun, kutipan filsuf, dsb.</span>
+                            </div>
+                            <textarea id="claims-text" oninput="updateIntegrityScore()" rows="3" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed placeholder:text-slate-400 bg-slate-50/50 outline-none transition-all-300" placeholder="Tuliskan data, rujukan ilmiah, atau data statistik spesifik dari respons AI yang menurut Anda berisiko salah / halusinasi (misalnya: Klaim AI bahwa draf draf regulasi etika AI UNESCO dirilis penuh di awal 2021)..."></textarea>
+                        </div>
+
+
+                        <!-- 4. Verification Sources -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                                <span class="text-slate-800">4. Sumber Verifikasi (Rujukan Validasi)</span>
                             </label>
-                            <textarea id="reflection-text" oninput="updateIntegrityScore()" rows="3" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none bg-slate-50/40 transition-all" placeholder="Tuliskan apa kesimpulan atau temuan Anda setelah mencocokkan data AI dengan bukti literatur sahih..."></textarea>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4" id="sources-container">
+                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
+                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
+                                    <span class="text-lg text-accentRed"><i class="fa-solid fa-graduation-cap"></i></span>
+                                    <span class="text-[11px] font-bold text-slate-800 block">Google Scholar</span>
+                                </label>
+                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
+                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
+                                    <span class="text-lg text-accentRed"><i class="fa-solid fa-bookmark"></i></span>
+                                    <span class="text-[11px] font-bold text-slate-800 block">Portal GARUDA</span>
+                                </label>
+                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
+                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
+                                    <span class="text-lg text-accentRed"><i class="fa-solid fa-award"></i></span>
+                                    <span class="text-[11px] font-bold text-slate-800 block">Akreditasi SINTA</span>
+                                </label>
+                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
+                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
+                                    <span class="text-lg text-accentRed"><i class="fa-solid fa-book-open"></i></span>
+                                    <span class="text-[11px] font-bold text-slate-800 block">Buku/Jurnal Resmi</span>
+                                </label>
+                            </div>
+
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-accentRed text-sm"><i class="fa-solid fa-link"></i></span>
+                                    <h5 class="text-xs font-bold text-slate-800">Detail &amp; Tautan Rujukan <span class="text-accentRed">*</span></h5>
+                                </div>
+                                <!-- Uses "Sisipkan" instead of "Tempel" -->
+                                <textarea id="reference-links" oninput="updateIntegrityScore()" rows="2.5" class="w-full text-xs rounded-lg border border-slate-200 px-3 py-2 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none text-slate-800 font-medium placeholder:text-slate-400 bg-white transition-all-300" placeholder="Sisipkan tautan dokumen, link publikasi online, DOI Google Scholar/SINTA, atau detail bab buku pembanding yang Anda jadikan acuan validasi..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- 5. Reflection -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
+                                    <span class="text-slate-800">5. Hasil Evaluasi Mandiri (Refleksi)</span> <span class="text-accentRed">*</span>
+                                </label>
+                                <span class="text-[10px] text-slate-400 font-medium">Bandingkan draf tulisan AI Anda dengan literatur nyata</span>
+                            </div>
+                            <textarea id="reflection-text" oninput="updateIntegrityScore()" rows="3" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed placeholder:text-slate-400 bg-slate-50/50 outline-none transition-all-300" placeholder="Apa hasil evaluasinya? (Contoh: 'Ternyata klaim regulasi UNESCO 2021 draf AI salah. Hasil penelusuran draf asli di Google Scholar dirilis pada akhir November 2022. Angka dan tahun rujukan esai saya sesuaikan berdasarkan literatur UNESCO')..."></textarea>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-accentRed text-sm"><i class="fa-solid fa-square-share-nodes"></i></span>
+                                <h5 class="text-xs font-bold text-slate-800">Tautan Berbagi Percakapan AI (Opsional)</h5>
+                            </div>
+                            <input type="url" id="share-link" class="w-full text-xs rounded-lg border border-slate-200 px-3 py-2 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none bg-white" placeholder="https://chatgpt.com/share/xxxx-xxxx-xxxx-xxxx">
                         </div>
 
                     </div>
@@ -377,11 +448,11 @@
 
             </section>
 
-            <!-- RIGHT PANEL: Score, Actions, and Messages (Spans 4 columns on large screens) -->
+            <!-- RIGHT SECTION (SIDEBAR) -->
             <section class="lg:col-span-4 space-y-6">
                 
-                <!-- Status & Submission Card -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <!-- Action: Submission Panel -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
                     <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                         <h4 class="font-bold text-slate-900 text-sm">Status Tugas</h4>
                         <span id="status-badge" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1.5 font-mono">
@@ -389,131 +460,188 @@
                         </span>
                     </div>
 
-                    <!-- File Attached Status List -->
                     <div class="space-y-2" id="uploaded-files-container">
-                        <div id="file-essay" class="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                            <div class="flex items-center gap-2">
-                                <span class="text-red-500 text-lg"><i class="fa-regular fa-file-pdf"></i></span>
+                        <div id="file-essay" class="flex items-center justify-between p-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl transition-all-300">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-red-500 text-xl"><i class="fa-regular fa-file-pdf"></i></span>
                                 <div class="text-left">
                                     <p class="text-xs font-bold text-slate-800 truncate max-w-[130px]" id="essay-filename">Esai_EtikaAI_Aditya.pdf</p>
                                     <p class="text-[10px] text-slate-400">PDF • 1.2 MB</p>
                                 </div>
                             </div>
-                            <button onclick="removeFile('file-essay')" class="text-slate-400 hover:text-red-500 p-1 rounded hover:bg-slate-200 transition-all cursor-pointer">
-                                <i class="fa-solid fa-xmark text-xs"></i>
+                            <button onclick="removeFile('file-essay')" class="text-slate-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-slate-200 transition-all-300">
+                                <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Actions -->
-                    <div class="space-y-2">
-                        <button onclick="simulateFileUpload()" class="w-full flex items-center justify-center gap-2 py-2.5 border border-dashed border-slate-300 hover:border-accentRed hover:bg-rose-50/50 rounded-xl text-xs font-bold text-slate-600 hover:text-accentRed transition-all bg-white cursor-pointer">
-                            <i class="fa-solid fa-plus"></i> Lampirkan File (.pdf/.docx)
+                    <div class="grid grid-cols-1 gap-2">
+                        <button onclick="simulateFileUpload()" class="w-full flex items-center justify-center gap-2 py-2.5 border border-dashed border-slate-300 hover:border-accentRed hover:bg-rose-50 rounded-xl text-xs font-bold text-slate-600 hover:text-accentRed transition-all bg-white">
+                            <i class="fa-solid fa-plus text-xs"></i> Unggah File Tugas (.pdf/.docx)
                         </button>
-                        <button onclick="submitAssignment()" class="w-full py-3 bg-gradient-to-r from-accentRed to-accentCoral hover:from-accentCoral hover:to-accentRed text-white font-bold rounded-xl text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-paper-plane"></i> Serahkan Tugas
+                    </div>
+
+                    <div class="space-y-2.5 pt-2">
+                        <button onclick="submitAssignment()" class="w-full py-3 bg-gradient-to-r from-accentRed to-accentCoral hover:from-accentCoral hover:to-accentRed text-white font-bold rounded-xl text-xs shadow-md shadow-accentRed/10 hover:shadow-lg hover:shadow-accentCoral/20 transition-all-300 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-xs"></i> Serahkan Tugas Sekarang
+                        </button>
+                        <button onclick="saveDraft()" class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition-all-300">
+                            Simpan Perubahan draf
                         </button>
                     </div>
                 </div>
 
                 <!-- INTEGRITY TRUST METER WIDGET -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
                     <div class="flex items-center gap-2.5 pb-3 border-b border-slate-100">
                         <span class="text-accentRed text-lg"><i class="fa-solid fa-shield-halved"></i></span>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wide">AI Integrity Score</h4>
-                            <p class="text-[9px] text-slate-400">Metrik Transparansi Mandiri</p>
+                        <div class="text-left">
+                            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wide font-display">AI Integrity Score</h4>
+                            <p class="text-[9px] text-slate-400 font-medium">Metrik Pengisian Validasi Mandiri</p>
                         </div>
                     </div>
 
-                    <!-- Progress Indicator -->
                     <div class="space-y-2">
                         <div class="flex items-center justify-between text-xs font-bold text-slate-800">
-                            <span id="integrity-label" class="text-xs">Mengukur...</span>
+                            <span id="integrity-label">Mengukur Input...</span>
                             <span id="integrity-percent" class="font-mono text-slate-500">0%</span>
                         </div>
-                        <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden p-[1px]">
-                            <div id="integrity-bar" class="h-full w-0 rounded-full bg-red-500 transition-all duration-300"></div>
+                        <div class="h-3 w-full bg-slate-100 rounded-full overflow-hidden p-[2px]">
+                            <div id="integrity-bar" class="h-full w-[10%] rounded-full bg-red-500 transition-all-300"></div>
                         </div>
                     </div>
 
-                    <!-- Progress Checklist Rules (Dynamic Checkboxes) -->
-                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-[10px] space-y-2.5">
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-[10.5px] leading-relaxed space-y-2">
                         <div id="rule-platform" class="flex items-center gap-2 text-slate-400">
-                            <i class="fa-solid fa-circle text-[6px]"></i>
-                            <span>Platform AI dideklarasikan</span>
+                            <i class="fa-solid fa-circle text-[7px]"></i>
+                            <span>Jenis Platform AI dideklarasikan</span>
                         </div>
                         <div id="rule-purpose" class="flex items-center gap-2 text-slate-400">
-                            <i class="fa-solid fa-circle text-[6px]"></i>
-                            <span>Cakupan penggunaan terisi</span>
+                            <i class="fa-solid fa-circle text-[7px]"></i>
+                            <span>Pilihan cakupan penggunaan terisi</span>
                         </div>
                         <div id="rule-claim" class="flex items-center gap-2 text-slate-400">
-                            <i class="fa-solid fa-circle text-[6px]"></i>
+                            <i class="fa-solid fa-circle text-[7px]"></i>
                             <span>Isian Klaim verifikasi data</span>
                         </div>
                         <div id="rule-source" class="flex items-center gap-2 text-slate-400">
-                            <i class="fa-solid fa-circle text-[6px]"></i>
+                            <i class="fa-solid fa-circle text-[7px]"></i>
                             <span>Min. 1 rujukan &amp; detail tautan terisi</span>
                         </div>
                         <div id="rule-reflection" class="flex items-center gap-2 text-slate-400">
-                            <i class="fa-solid fa-circle text-[6px]"></i>
-                            <span>Refleksi temuan evaluasi terisi</span>
+                            <i class="fa-solid fa-circle text-[7px]"></i>
+                            <span>Isian refleksi temuan validasi</span>
+                        </div>
+                    </div>
+
+
+                    <!-- PRECISE ART OF INFORMATION BOX (Apa Arti Skor Ini?) -->
+                    <div class="bg-[#fff1f2] border border-[#ffe4e6] p-4 rounded-2xl flex items-start gap-3">
+                        <span class="text-rose-500 text-sm mt-0.5"><i class="fa-solid fa-circle-info"></i></span>
+                        <div class="text-left">
+                            <h5 class="text-xs font-bold text-rose-950 mb-1">Apa Arti Skor Ini?</h5>
+                            <p class="text-slate-600 leading-relaxed text-[10.5px] font-medium">
+                                Persentase skor di atas menandakan tingkat kelengkapan mahasiswa dalam melengkapi data Verify AI. Semakin lengkap draf isian pembuktian yang dideklarasikan, semakin tinggi nilai transparansi, akuntabilitas riset, dan kejujuran akademik Anda.
+                            </p>
                         </div>
                     </div>
                 </div>
 
+                <!-- PRECISE PRIVATE COMMENT WIDGET (DOSEN) -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="flex items-center gap-2.5">
+                        <span class="text-slate-500 text-lg"><i class="fa-regular fa-comment"></i></span>
+                        <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wide">Komentar Privat (Dosen)</h4>
+                    </div>
+
+                    <!-- Dynamic Comments Scroll panel -->
+                    <div class="space-y-3.5 max-h-[350px] overflow-y-auto pr-1" id="comments-list">
+                        <!-- User Comment Bubble -->
+                        <div class="bg-[#f8fafc] p-4 rounded-2xl text-[12px] space-y-2">
+                            <div class="flex justify-between items-center text-[10.5px]">
+                                <span class="font-bold text-slate-800">Anda (Aditya)</span>
+                                <span class="text-slate-400">10:46 AM</span>
+                            </div>
+                            <p class="text-slate-600 leading-relaxed font-medium">Pak Budiman, saya melampirkan rujukan tautan dari Google Scholar &amp; berkas UNESCO untuk mendukung akurasi draf saya.</p>
+                        </div>
+
+                        <!-- Verified Dosen Reply Comment Bubble -->
+                        <div class="bg-[#f0f7ff] border border-blue-50/50 p-4 rounded-2xl text-[12px] space-y-2">
+                            <div class="flex justify-between items-center text-[10.5px]">
+                                <span class="font-bold text-blue-700 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-circle-check text-[#3b82f6]"></i> Dr. Budiman Wibowo (Dosen)
+                                </span>
+                                <span class="text-slate-400">10:48 AM</span>
+                            </div>
+                            <p class="text-slate-700 leading-relaxed font-medium">Bagus sekali, Aditya. Upaya verifikasi silang mandiri seperti ini yang mencerminkan semangat kejujuran akademik. Teruskan analisis kritis Anda!</p>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Input Box -->
+                    <div class="flex gap-2 pt-1.5">
+                        <input type="text" id="comment-input" class="flex-grow text-xs rounded-xl border border-slate-200 px-4 py-3 focus:border-accentRed outline-none placeholder:text-slate-400 bg-slate-50" placeholder="Kirim pesan pribadi ke dosen...">
+                        <button onclick="addComment()" class="bg-[#f1f5f9] hover:bg-slate-200 text-slate-600 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300">
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
             </section>
+
         </main>
     </div>
 
+
     <!-- ========================================================== -->
-    <!-- CUSTOM DIALOG NOTIFICATION MODAL & TOAST SYSTEM -->
-    <!-- ========================================================== -->
-    <div id="success-modal" class="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-all duration-300">
-        <div class="bg-white rounded-2xl p-6 md:p-8 max-w-sm w-full mx-4 shadow-2xl border border-slate-100 text-center transform scale-95 transition-all duration-300">
-            <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+    <!-- COMPLETED SUBMIT CELEBRATION DIALOG MODAL -->
+    <div id="success-modal" class="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-all-300">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full mx-4 shadow-2xl border border-slate-100 text-center transform scale-95 transition-all-300 duration-300">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
                 <i class="fa-solid fa-circle-check"></i>
             </div>
-            <h3 class="font-extrabold text-lg text-slate-900">Tugas Berhasil Terkirim!</h3>
+            <h3 class="font-extrabold text-xl text-slate-950">Tugas Anda Terkirim!</h3>
             <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                Berkas esai beserta instrumen transparansi <strong class="text-slate-700">VERIFY SHEET</strong> berhasil diverifikasi dan terkirim ke server Akses Kelas.
+                Berkas esai beserta instrumen kejujuran akademis <strong class="text-slate-800 font-semibold">VERIFY SHEET</strong> berhasil diverifikasi dan diserahkan ke Akses Kelas.
             </p>
-            <button onclick="closeModal()" class="w-full mt-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all cursor-pointer">
+            
+            <div class="mt-6 bg-slate-50 p-3.5 rounded-2xl border border-slate-100 text-left flex items-center justify-between">
+                <div>
+                    <p class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Metode Examination</p>
+                    <p class="text-xs font-bold text-slate-800">Deklarasi Transparansi AI</p>
+                </div>
+                <div class="px-3 py-1 bg-gradient-to-r from-accentRed to-accentCoral text-white text-xs font-bold rounded-lg shadow-sm">
+                    Verified
+                </div>
+            </div>
+
+            <button onclick="closeModal()" class="w-full mt-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl text-xs transition-all-300">
                 Kembali ke Dasbor
             </button>
         </div>
     </div>
 
-    <!-- Modern Branded Toast Notification -->
-    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 text-xs font-semibold transform translate-y-10 opacity-0 pointer-events-none transition-all duration-300 z-50">
+    <!-- TOAST NOTIFICATION STACK -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 text-xs font-semibold transform translate-y-10 opacity-0 pointer-events-none transition-all-300 z-50">
         <span class="text-accentCoral" id="toast-icon"><i class="fa-solid fa-circle-info"></i></span>
-        <span id="toast-text">Perubahan disimpan</span>
+        <span id="toast-text" class="font-medium">Draf tersimpan otomatis</span>
     </div>
 
 
     <!-- ========================================================== -->
-    <!-- JAVASCRIPT SYSTEM LOGIC -->
+    <!-- JAVASCRIPT LOGIC IMPLEMENTATION -->
     <!-- ========================================================== -->
     <script>
         let selectedPlatforms = [];
         let uploadedFiles = ['file-essay'];
         let integrityScore = 0;
 
-        // Toggles the Mobile Hamburger Dropdown Menu
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Switch to Dashboard Screen on Login
         function handleLogin() {
             const usernameInput = document.getElementById('login-username').value.trim();
             if (usernameInput === '') {
-                triggerToast("fa-solid fa-circle-exclamation", "Username tidak boleh kosong!", "text-red-400");
+                showToast("fa-solid fa-circle-exclamation", "Masukkan Username Anda!", "text-red-400");
                 return;
             }
 
-            // Standardize Username Formatting
             let formattedName = usernameInput.split('.')
                                              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                                              .join(' ');
@@ -537,11 +665,10 @@
                 dashboardScreen.classList.add('flex');
                 
                 updateIntegrityScore();
-                triggerToast("fa-solid fa-user-check", "Selamat datang kembali, " + firstName, "text-emerald-400");
+                showToast("fa-solid fa-user-check", "Selamat datang di Akses Kelas, " + formattedName, "text-accentCoral");
             }, 300);
         }
 
-        // Transition back to Login Screen on Logout
         function handleLogout() {
             const loginScreen = document.getElementById('login-screen');
             const dashboardScreen = document.getElementById('dashboard-screen');
@@ -554,11 +681,10 @@
                 loginScreen.classList.add('flex');
                 loginScreen.classList.remove('opacity-0');
                 
-                triggerToast("fa-solid fa-right-from-bracket", "Berhasil keluar dari sesi", "text-accentRed");
+                showToast("fa-solid fa-right-from-bracket", "Berhasil keluar dari sesi", "text-accentRed");
             }, 300);
         }
 
-        // Handles select states for AI platforms
         function togglePlatform(platform) {
             const btn = document.getElementById(`btn-${platform}`);
             const otherContainer = document.getElementById('other-ai-container');
@@ -582,11 +708,21 @@
             updateIntegrityScore();
         }
 
-        // Algoritma dinamis perhitungan AI Integrity Score
+        function togglePurposeOther() {
+            const checkbox = document.getElementById('purpose-other-checkbox');
+            const container = document.getElementById('purpose-other-container');
+            if (checkbox.checked) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+                document.getElementById('purpose-other-text').value = '';
+            }
+        }
+
         function updateIntegrityScore() {
             let score = 0;
             
-            // 1. Pilar Platform AI
+            // 1. Platform validation
             const rulePlatform = document.getElementById('rule-platform');
             let isPlatformValid = false;
             if (selectedPlatforms.length > 0) {
@@ -607,17 +743,35 @@
                 setRuleStatus(rulePlatform, false);
             }
 
-            // 2. Pilar Cakupan Penggunaan AI
+            // 2. Purpose validation (with dynamic other text area checked)
             const checkedPurposes = document.querySelectorAll('#purpose-container input[type="checkbox"]:checked');
             const rulePurpose = document.getElementById('rule-purpose');
+            let isPurposeValid = false;
+            
             if (checkedPurposes.length > 0) {
+                let standardChecked = false;
+                const purposes = document.querySelectorAll('#purpose-container input[type="checkbox"]');
+                purposes.forEach(p => {
+                    if (p.checked && p.id !== 'purpose-other-checkbox') {
+                        standardChecked = true;
+                    }
+                });
+                const otherChecked = document.getElementById('purpose-other-checkbox').checked;
+                const otherVal = document.getElementById('purpose-other-text').value.trim();
+                
+                if (standardChecked || (otherChecked && otherVal.length > 1)) {
+                    isPurposeValid = true;
+                }
+            }
+
+            if (isPurposeValid) {
                 score += 20;
                 setRuleStatus(rulePurpose, true);
             } else {
                 setRuleStatus(rulePurpose, false);
             }
 
-            // 3. Pilar Klaim data / teori
+            // 3. Claims validation
             const claimsVal = document.getElementById('claims-text').value.trim();
             const ruleClaim = document.getElementById('rule-claim');
             if (claimsVal.length > 8) {
@@ -627,7 +781,7 @@
                 setRuleStatus(ruleClaim, false);
             }
 
-            // 4. Pilar Tautan rujukan ilmiah & Sumber Verifikasi
+            // 4. Sources validation
             const checkedSources = document.querySelectorAll('#sources-container input[type="checkbox"]:checked');
             const referenceLinksVal = document.getElementById('reference-links').value.trim();
             const ruleSource = document.getElementById('rule-source');
@@ -639,7 +793,7 @@
                 setRuleStatus(ruleSource, false);
             }
 
-            // 5. Pilar Refleksi temuan evaluasi
+            // 5. Reflection validation
             const reflectionVal = document.getElementById('reflection-text').value.trim();
             const ruleReflection = document.getElementById('rule-reflection');
             if (reflectionVal.length > 12) {
@@ -649,7 +803,6 @@
                 setRuleStatus(ruleReflection, false);
             }
 
-            // Sinkronisasi representasi meteran visual
             integrityScore = score;
             const bar = document.getElementById('integrity-bar');
             const percentLabel = document.getElementById('integrity-percent');
@@ -659,50 +812,48 @@
             bar.style.width = `${score}%`;
 
             if (score <= 30) {
-                bar.className = "h-full rounded-full bg-red-500 transition-all duration-300";
-                labelText.innerText = "Kurang Lengkap";
-                labelText.className = "text-xs font-bold text-red-500";
+                bar.className = "h-full rounded-full bg-red-500 transition-all-300";
+                labelText.innerText = "Sangat Rendah (Lengkapi!)";
+                labelText.className = "text-xs font-bold text-red-600 animate-pulse";
             } else if (score <= 70) {
-                bar.className = "h-full rounded-full bg-amber-500 transition-all duration-300";
+                bar.className = "h-full rounded-full bg-accentRed transition-all-300";
                 labelText.innerText = "Kelengkapan Sedang";
-                labelText.className = "text-xs font-bold text-amber-500";
+                labelText.className = "text-xs font-bold text-accentRed";
             } else {
-                bar.className = "h-full rounded-full bg-emerald-500 transition-all duration-300";
-                labelText.innerText = "Verifikasi Selesai";
-                labelText.className = "text-xs font-bold text-emerald-500";
+                bar.className = "h-full rounded-full bg-emerald-500 transition-all-300";
+                labelText.innerText = "Verify AI Lengkap";
+                labelText.className = "text-xs font-bold text-emerald-600";
             }
         }
 
-        // Sinkronisasi status checklist pilar
         function setRuleStatus(element, isVerified) {
             if (isVerified) {
-                element.className = "flex items-center gap-2 text-slate-800 font-bold transition-all";
+                element.className = "flex items-center gap-2 text-slate-800 font-bold transition-all-300";
                 element.querySelector('i').className = "fa-solid fa-circle-check text-emerald-500 text-xs";
             } else {
-                element.className = "flex items-center gap-2 text-slate-400 font-normal transition-all";
-                element.querySelector('i').className = "fa-solid fa-circle text-[6px]";
+                element.className = "flex items-center gap-2 text-slate-400 font-normal transition-all-300";
+                element.querySelector('i').className = "fa-solid fa-circle text-[7px]";
             }
         }
 
-        // Simulasi Menambahkan Lampiran Tugas
         function simulateFileUpload() {
             const container = document.getElementById('uploaded-files-container');
             const fileId = `file-${Date.now()}`;
             
             const fileBlock = document.createElement('div');
             fileBlock.id = fileId;
-            fileBlock.className = "flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-xl transition-all transform scale-95 opacity-0";
+            fileBlock.className = "flex items-center justify-between p-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl transition-all transform scale-95 opacity-0";
             
             fileBlock.innerHTML = `
-                <div class="flex items-center gap-2">
-                    <span class="text-accentRed text-lg"><i class="fa-regular fa-file-word"></i></span>
+                <div class="flex items-center gap-2.5">
+                    <span class="text-accentRed text-xl"><i class="fa-regular fa-file-word"></i></span>
                     <div class="text-left">
-                        <p class="text-xs font-bold text-slate-800 truncate max-w-[130px]">Dokumen_Rujukan_Klaim.docx</p>
+                        <p class="text-xs font-bold text-slate-800 truncate max-w-[130px]">Dokumen_Lampiran_Verify.docx</p>
                         <p class="text-[10px] text-slate-400">DOCX • 740 KB</p>
                     </div>
                 </div>
-                <button onclick="removeFile('${fileId}')" class="text-slate-400 hover:text-red-500 p-1 rounded hover:bg-slate-200 transition-all cursor-pointer">
-                    <i class="fa-solid fa-xmark text-xs"></i>
+                <button onclick="removeFile('${fileId}')" class="text-slate-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-slate-200 transition-all-300">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
             `;
             
@@ -713,10 +864,9 @@
                 fileBlock.classList.remove('scale-95', 'opacity-0');
             }, 50);
 
-            triggerToast("fa-solid fa-cloud-arrow-up", "Lampiran berhasil ditambahkan", "text-emerald-400");
+            showToast("fa-solid fa-cloud-arrow-up", "Dokumen rujukan berhasil dilampirkan", "text-emerald-500");
         }
 
-        // Menghapus Lampiran Tugas
         function removeFile(fileId) {
             const element = document.getElementById(fileId);
             if (element) {
@@ -726,21 +876,31 @@
                     uploadedFiles = uploadedFiles.filter(id => id !== fileId);
                 }, 300);
             }
-            triggerToast("fa-solid fa-trash-can", "Dokumen lampiran dihapus", "text-red-400");
+            showToast("fa-solid fa-trash-can", "Lampiran dokumen dihapus", "text-red-400");
         }
 
-        // Pengiriman Tugas Akhir & Validasi Kelayakan
+        function saveDraft() {
+            showToast("fa-solid fa-floppy-disk", "Draf kerja Verify Sheet disimpan", "text-accentRed");
+        }
+
         function submitAssignment() {
             if (selectedPlatforms.length === 0) {
-                triggerToast("fa-solid fa-circle-exclamation", "Pilih minimal 1 jenis Platform AI!", "text-red-400");
+                showToast("fa-solid fa-circle-exclamation", "Pilih minimal 1 jenis Platform AI yang dipakai!", "text-red-400");
                 return;
             }
             if (selectedPlatforms.includes('lainnya') && document.getElementById('other-ai-name').value.trim().length <= 1) {
-                triggerToast("fa-solid fa-pen-to-square", "Tulis nama AI lainnya!", "text-red-400");
+                showToast("fa-solid fa-pen-to-square", "Sebutkan nama AI Lainnya yang Anda gunakan!", "text-red-400");
+                return;
+            }
+            
+            const otherChecked = document.getElementById('purpose-other-checkbox').checked;
+            const otherVal = document.getElementById('purpose-other-text').value.trim();
+            if (otherChecked && otherVal.length <= 1) {
+                showToast("fa-solid fa-pen-nib", "Isi kolom tujuan penggunaan lainnya secara manual!", "text-red-400");
                 return;
             }
             if (uploadedFiles.length === 0) {
-                triggerToast("fa-solid fa-file-circle-exclamation", "Unggah berkas esai utama Anda!", "text-red-400");
+                showToast("fa-solid fa-file-circle-exclamation", "Unggah minimal 1 draf esai utama!", "text-red-400");
                 return;
             }
 
@@ -758,7 +918,6 @@
             }, 10);
         }
 
-        // Menutup Pop-up Sukses
         function closeModal() {
             const modal = document.getElementById('success-modal');
             const modalBox = modal.querySelector('div');
@@ -770,8 +929,45 @@
             }, 300);
         }
 
-        // Pemicu Notifikasi Toast Kustom
-        function triggerToast(icon, text, iconColorClass = "text-accentCoral") {
+        function addComment() {
+            const input = document.getElementById('comment-input');
+            const textVal = input.value.trim();
+            if (textVal === '') return;
+
+            const commentsList = document.getElementById('comments-list');
+            const newComment = document.createElement('div');
+            newComment.className = "bg-[#f8fafc] p-4 rounded-2xl text-[12px] space-y-2 transform scale-95 opacity-0 transition-all-300";
+            
+            const currentName = document.getElementById('user-display-name').innerText.split(' ')[0];
+            
+            const d = new Date();
+            let hours = d.getHours();
+            let minutes = d.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            const strTime = hours + ':' + minutes + ' ' + ampm;
+
+            newComment.innerHTML = `
+                <div class="flex justify-between items-center text-[10.5px]">
+                    <span class="font-bold text-slate-800">Anda (${currentName})</span>
+                    <span class="text-slate-400">${strTime}</span>
+                </div>
+                <p class="text-slate-600 leading-relaxed font-medium">${textVal}</p>
+            `;
+            
+            commentsList.appendChild(newComment);
+            input.value = '';
+
+            setTimeout(() => {
+                newComment.classList.remove('scale-95', 'opacity-0');
+            }, 50);
+
+            commentsList.scrollTop = commentsList.scrollHeight;
+        }
+
+        function showToast(icon, text, iconColorClass = "text-accentCoral") {
             const toast = document.getElementById('toast');
             const toastText = document.getElementById('toast-text');
             const toastIcon = document.getElementById('toast-icon');
@@ -784,11 +980,10 @@
 
             setTimeout(() => {
                 toast.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
-            }, 3500);
+            }, 3000);
         }
 
-        // Sinkronisasi Waktu Server
-        function syncClock() {
+        function updateClock() {
             const dateObj = new Date();
             const formatStr = dateObj.toLocaleDateString('id-ID', {
                 day: '2-digit',
@@ -806,8 +1001,8 @@
         }
 
         window.onload = function () {
-            syncClock();
-            setInterval(syncClock, 30000);
+            updateClock();
+            setInterval(updateClock, 30000); 
             updateIntegrityScore();
         }
     </script>
