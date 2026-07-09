@@ -8,10 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Font: Plus Jakarta Sans & Space Grotesk -->
+    <!-- Google Font: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2 family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -19,7 +19,6 @@
                 extend: {
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
                     },
                     colors: {
                         brandDark: '#0f172a',       
@@ -64,6 +63,22 @@
             animation: orbitFloat 12s infinite ease-in-out alternate;
             background: radial-gradient(circle, rgba(251, 113, 133, 0.06) 0%, transparent 70%);
         }
+        /* Gaya khusus nomor anotasi esai */
+        .essay-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 9999px;
+            background-color: #e11d48;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 11px;
+            box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.3);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen text-slate-800 font-sans flex flex-col antialiased overflow-x-hidden">
@@ -92,7 +107,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.180 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
                     </svg>
                 </div>
-                <h2 class="font-display font-extrabold text-2xl tracking-tight text-slate-900 leading-none">
+                <h2 class="font-bold text-2xl tracking-tight text-slate-900 leading-none">
                     AKSES<span class="text-accentRed">KELAS</span>
                 </h2>
                 <p class="text-[9px] text-accentRed font-mono uppercase tracking-widest font-extrabold mt-1.5">Integrated Learning Management System</p>
@@ -184,7 +199,7 @@
                             <i class="fa-solid fa-shield-halved text-xs"></i>
                         </div>
                         <div>
-                            <h1 class="font-display font-extrabold text-base leading-none tracking-tight text-slate-900">AKSES<span class="text-accentRed">KELAS</span></h1>
+                            <h1 class="font-bold text-base leading-none tracking-tight text-slate-900">AKSES<span class="text-accentRed">KELAS</span></h1>
                             <p class="text-[8px] text-accentRed font-mono tracking-widest font-bold uppercase mt-0.5">Portal Mahasiswa</p>
                         </div>
                     </div>
@@ -247,7 +262,6 @@
                             Akun Terverifikasi
                         </div>
                         <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 leading-none">Hi, <span id="welcome-name">Aditya Wijaya</span>! 👋</h2>
-                        <!-- Generalised welcome banner text: fits broad LMS use-cases -->
                         <p class="text-xs text-slate-500 mt-1.5">Selamat datang di platform Akses Kelas. Selesaikan pengisian instrumen verifikasi kejujuran akademik Anda di bawah ini.</p>
                     </div>
                     <div class="bg-slate-50 border border-slate-100 px-4 py-3 rounded-xl flex items-center gap-3">
@@ -289,7 +303,7 @@
                                 <i class="fa-solid fa-clipboard-check"></i>
                             </span>
                             <div>
-                                <h4 class="font-display font-bold text-sm tracking-wide text-white">VERIFY SHEET</h4>
+                                <h4 class="font-bold text-sm tracking-wide text-white">VERIFY SHEET</h4>
                                 <p class="text-[10px] text-slate-300">Pernyataan Transparansi & Validasi Output AI</p>
                             </div>
                         </div>
@@ -301,9 +315,19 @@
                         <!-- 1. AI Platform Choice -->
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                                <span class="text-slate-800">1. Jenis Kecerdasan Buatan (AI) yang Digunakan</span> <span class="text-accentRed">*</span>
+                                <span class="essay-badge">①</span><span class="text-slate-800">1. Jenis Kecerdasan Buatan (AI) yang Digunakan</span> <span class="text-accentRed">*</span>
                             </label>
-                            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                            
+                            <!-- Notice Mode Mandiri / No-AI -->
+                            <div id="no-ai-notice" class="hidden mb-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-xl flex items-center gap-3">
+                                <span class="text-lg"><i class="fa-solid fa-shield-heart"></i></span>
+                                <div>
+                                    <p class="font-bold">Mode Mandiri (Non-AI) Aktif!</p>
+                                    <p class="text-[11px] opacity-90">Karena Anda tidak menggunakan bantuan AI, semua kewajiban instrumen verifikasi AI dibebaskan. AI Integrity Score otomatis diatur penuh ke 100%.</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-5 gap-3">
                                 <button onclick="togglePlatform('chatgpt')" id="btn-chatgpt" class="flex items-center gap-2.5 justify-center py-2.5 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all-300">
                                     <i class="fa-solid fa-circle-nodes text-[#10a37f]"></i> ChatGPT
                                 </button>
@@ -316,6 +340,9 @@
                                 <button onclick="togglePlatform('lainnya')" id="btn-lainnya" class="flex items-center gap-2.5 justify-center py-2.5 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all-300">
                                     <i class="fa-solid fa-ellipsis text-accentRed"></i> Lainnya
                                 </button>
+                                <button onclick="togglePlatform('noai')" id="btn-noai" class="flex items-center gap-2.5 justify-center py-2.5 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-all-300 col-span-1">
+                                    <i class="fa-solid fa-ban text-emerald-600"></i> Tanpa AI
+                                </button>
                             </div>
 
                             <div id="other-ai-container" class="hidden mt-3 transition-all-300">
@@ -324,8 +351,8 @@
                             </div>
                         </div>
 
-                        <!-- 2. Usage Purposes with 'Opsi Lainnya' write-in -->
-                        <div>
+                        <!-- 2. Usage Purposes -->
+                        <div id="section-purposes">
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
                                 <span class="text-slate-800">2. Cakupan Hubungan Penggunaan AI</span> <span class="text-xs text-slate-400 font-normal capitalize">(Dapat dicentang lebih dari satu)</span>
                             </label>
@@ -362,7 +389,6 @@
                                     <input type="checkbox" id="purpose-other-checkbox" onchange="togglePurposeOther(); updateIntegrityScore()" class="mt-1 rounded text-accentRed focus:ring-accentRed h-4.5 w-4.5">
                                     <div>
                                         <p class="text-xs font-bold text-slate-800">Opsi Lainnya (Tulis Mandiri)</p>
-                                        <!-- Replaced "kustom" with "AI" in descriptions -->
                                         <p class="text-[10px] text-slate-500">Deklarasikan tujuan penggunaan AI di luar opsi di atas.</p>
                                     </div>
                                 </label>
@@ -375,67 +401,87 @@
                         </div>
 
                         <!-- 3. Verified Claims -->
-                        <div>
+                        <div id="section-claims" class="relative">
                             <div class="flex items-center justify-between mb-2">
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                                    <span class="text-slate-800">3. Klaim Keilmuan AI yang Perlu Diverifikasi</span> <span class="text-accentRed">*</span>
+                                    <span class="essay-badge">②</span><span class="text-slate-800">3. Klaim Keilmuan AI yang Perlu Diverifikasi</span> <span class="text-accentRed">*</span>
                                 </label>
                                 <span class="text-[10px] text-slate-400 font-medium">Contoh: Rujukan tahun, kutipan filsuf, dsb.</span>
                             </div>
-                            <textarea id="claims-text" oninput="updateIntegrityScore()" rows="3" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed placeholder:text-slate-400 bg-slate-50/50 outline-none transition-all-300" placeholder="Tuliskan data, rujukan ilmiah, atau data statistik spesifik dari respons AI yang menurut Anda berisiko salah / halusinasi (misalnya: Klaim AI bahwa draf draf regulasi etika AI UNESCO dirilis penuh di awal 2021)..."></textarea>
+                            
+                            <!-- No-AI Overlay Wrapper -->
+                            <div class="relative">
+                                <div id="overlay-claims" class="hidden absolute inset-0 bg-slate-100/60 backdrop-blur-[1px] rounded-xl flex items-center justify-center font-bold text-slate-500 text-xs z-10">
+                                    <i class="fa-solid fa-ban mr-1.5"></i> Bebas Validasi - Mode Mandiri
+                                </div>
+                                <textarea id="claims-text" oninput="updateIntegrityScore()" rows="3" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed placeholder:text-slate-400 bg-slate-50/50 outline-none transition-all-300" placeholder="Tuliskan data, rujukan ilmiah, atau data statistik spesifik dari respons AI yang menurut Anda berisiko salah / halusinasi (misalnya: Klaim AI bahwa draf draf regulasi etika AI UNESCO dirilis penuh di awal 2021)..."></textarea>
+                            </div>
                         </div>
 
 
                         <!-- 4. Verification Sources -->
-                        <div>
+                        <div id="section-sources" class="relative">
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                                <span class="text-slate-800">4. Sumber Verifikasi (Rujukan Validasi)</span>
+                                <span class="essay-badge">③</span><span class="text-slate-800">4. Sumber Verifikasi (Rujukan Validasi)</span>
                             </label>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4" id="sources-container">
-                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
-                                    <span class="text-lg text-accentRed"><i class="fa-solid fa-graduation-cap"></i></span>
-                                    <span class="text-[11px] font-bold text-slate-800 block">Google Scholar</span>
-                                </label>
-                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
-                                    <span class="text-lg text-accentRed"><i class="fa-solid fa-bookmark"></i></span>
-                                    <span class="text-[11px] font-bold text-slate-800 block">Portal GARUDA</span>
-                                </label>
-                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
-                                    <span class="text-lg text-accentRed"><i class="fa-solid fa-award"></i></span>
-                                    <span class="text-[11px] font-bold text-slate-800 block">Akreditasi SINTA</span>
-                                </label>
-                                <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
-                                    <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
-                                    <span class="text-lg text-accentRed"><i class="fa-solid fa-book-open"></i></span>
-                                    <span class="text-[11px] font-bold text-slate-800 block">Buku/Jurnal Resmi</span>
-                                </label>
-                            </div>
-
-                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                                <div class="flex items-center gap-2 mb-2">
-                                    <span class="text-accentRed text-sm"><i class="fa-solid fa-link"></i></span>
-                                    <h5 class="text-xs font-bold text-slate-800">Detail &amp; Tautan Rujukan <span class="text-accentRed">*</span></h5>
+                            
+                            <!-- No-AI Overlay Wrapper -->
+                            <div class="relative">
+                                <div id="overlay-sources" class="hidden absolute inset-0 bg-slate-100/60 backdrop-blur-[1px] rounded-xl flex items-center justify-center font-bold text-slate-500 text-xs z-10">
+                                    <i class="fa-solid fa-ban mr-1.5"></i> Bebas Validasi - Mode Mandiri
                                 </div>
-                                <!-- Uses "Sisipkan" instead of "Tempel" -->
-                                <textarea id="reference-links" oninput="updateIntegrityScore()" rows="2.5" class="w-full text-xs rounded-lg border border-slate-200 px-3 py-2 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none text-slate-800 font-medium placeholder:text-slate-400 bg-white transition-all-300" placeholder="Sisipkan tautan dokumen, link publikasi online, DOI Google Scholar/SINTA, atau detail bab buku pembanding yang Anda jadikan acuan validasi..."></textarea>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4" id="sources-container">
+                                    <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
+                                        <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
+                                        <span class="text-lg text-accentRed"><i class="fa-solid fa-graduation-cap"></i></span>
+                                        <span class="text-[11px] font-bold text-slate-800 block">Google Scholar</span>
+                                    </label>
+                                    <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
+                                        <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
+                                        <span class="text-lg text-accentRed"><i class="fa-solid fa-bookmark"></i></span>
+                                        <span class="text-[11px] font-bold text-slate-800 block">Portal GARUDA</span>
+                                    </label>
+                                    <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
+                                        <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
+                                        <span class="text-lg text-accentRed"><i class="fa-solid fa-award"></i></span>
+                                        <span class="text-[11px] font-bold text-slate-800 block">Akreditasi SINTA</span>
+                                    </label>
+                                    <label class="relative flex flex-col items-center gap-1.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-center bg-slate-50/50 select-none transition-all-300">
+                                        <input type="checkbox" onchange="updateIntegrityScore()" class="absolute top-2.5 right-2.5 rounded text-accentRed focus:ring-accentRed h-4 w-4">
+                                        <span class="text-lg text-accentRed"><i class="fa-solid fa-book-open"></i></span>
+                                        <span class="text-[11px] font-bold text-slate-800 block">Buku/Jurnal Resmi</span>
+                                    </label>
+                                </div>
+
+                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="text-accentRed text-sm"><i class="fa-solid fa-link"></i></span>
+                                        <h5 class="text-xs font-bold text-slate-800">Detail &amp; Tautan Rujukan <span class="text-accentRed">*</span></h5>
+                                    </div>
+                                    <textarea id="reference-links" oninput="updateIntegrityScore()" rows="2.5" class="w-full text-xs rounded-lg border border-slate-200 px-3 py-2 focus:border-accentRed focus:ring-1 focus:ring-accentRed outline-none text-slate-800 font-medium placeholder:text-slate-400 bg-white transition-all-300" placeholder="Sisipkan tautan dokumen, link publikasi online, DOI Google Scholar/SINTA, atau detail bab buku pembanding yang Anda jadikan acuan validasi..."></textarea>
+                                </div>
                             </div>
                         </div>
 
                         <!-- 5. Reflection -->
-                        <div>
+                        <div id="section-reflection" class="relative">
                             <div class="flex items-center justify-between mb-2">
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                                    <span class="text-slate-800">5. Hasil Evaluasi Mandiri (Refleksi)</span> <span class="text-accentRed">*</span>
+                                    <span class="essay-badge">④</span><span class="text-slate-800">5. Hasil Evaluasi Mandiri (Refleksi)</span> <span class="text-accentRed">*</span>
                                 </label>
                                 <span class="text-[10px] text-slate-400 font-medium">Bandingkan draf tulisan AI Anda dengan literatur nyata</span>
                             </div>
-                            <textarea id="reflection-text" oninput="updateIntegrityScore()" rows="3" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed placeholder:text-slate-400 bg-slate-50/50 outline-none transition-all-300" placeholder="Apa hasil evaluasinya? (Contoh: 'Ternyata klaim regulasi UNESCO 2021 draf AI salah. Hasil penelusuran draf asli di Google Scholar dirilis pada akhir November 2022. Angka dan tahun rujukan esai saya sesuaikan berdasarkan literatur UNESCO')..."></textarea>
+                            
+                            <!-- No-AI Overlay Wrapper -->
+                            <div class="relative">
+                                <div id="overlay-reflection" class="hidden absolute inset-0 bg-slate-100/60 backdrop-blur-[1px] rounded-xl flex items-center justify-center font-bold text-slate-500 text-xs z-10">
+                                    <i class="fa-solid fa-ban mr-1.5"></i> Bebas Validasi - Mode Mandiri
+                                </div>
+                                <textarea id="reflection-text" oninput="updateIntegrityScore()" rows="3" class="w-full text-xs rounded-xl border border-slate-200 px-4 py-3 focus:border-accentRed focus:ring-1 focus:ring-accentRed placeholder:text-slate-400 bg-slate-50/50 outline-none transition-all-300" placeholder="Apa hasil evaluasinya? (Contoh: 'Ternyata klaim regulasi UNESCO 2021 draf AI salah. Hasil penelusuran draf asli di Google Scholar dirilis pada akhir November 2022. Angka dan tahun rujukan esai saya sesuaikan berdasarkan literatur UNESCO')..."></textarea>
+                            </div>
                         </div>
 
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200" id="section-sharelink">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-accentRed text-sm"><i class="fa-solid fa-square-share-nodes"></i></span>
                                 <h5 class="text-xs font-bold text-slate-800">Tautan Berbagi Percakapan AI (Opsional)</h5>
@@ -494,6 +540,7 @@
                 <!-- INTEGRITY TRUST METER WIDGET -->
                 <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
                     <div class="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+                        <span class="essay-badge">⑤</span>
                         <span class="text-accentRed text-lg"><i class="fa-solid fa-shield-halved"></i></span>
                         <div class="text-left">
                             <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wide font-display">AI Integrity Score</h4>
@@ -535,7 +582,7 @@
                     </div>
 
 
-                    <!-- PRECISE ART OF INFORMATION BOX (Apa Arti Skor Ini?) -->
+                    <!-- PRECISE ART OF INFORMATION BOX -->
                     <div class="bg-[#fff1f2] border border-[#ffe4e6] p-4 rounded-2xl flex items-start gap-3">
                         <span class="text-rose-500 text-sm mt-0.5"><i class="fa-solid fa-circle-info"></i></span>
                         <div class="text-left">
@@ -550,6 +597,7 @@
                 <!-- PRECISE PRIVATE COMMENT WIDGET (DOSEN) -->
                 <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
                     <div class="flex items-center gap-2.5">
+                        <span class="essay-badge">⑥</span>
                         <span class="text-slate-500 text-lg"><i class="fa-regular fa-comment"></i></span>
                         <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wide">Komentar Privat (Dosen)</h4>
                     </div>
@@ -634,6 +682,7 @@
         let selectedPlatforms = [];
         let uploadedFiles = ['file-essay'];
         let integrityScore = 0;
+        let noAiMode = false;
 
         function handleLogin() {
             const usernameInput = document.getElementById('login-username').value.trim();
@@ -685,27 +734,84 @@
             }, 300);
         }
 
+        // Toggles AI platforms, handles standard vs "noai" mode
         function togglePlatform(platform) {
             const btn = document.getElementById(`btn-${platform}`);
             const otherContainer = document.getElementById('other-ai-container');
+            const noAiNotice = document.getElementById('no-ai-notice');
             
-            if (selectedPlatforms.includes(platform)) {
-                selectedPlatforms = selectedPlatforms.filter(p => p !== platform);
-                btn.classList.remove('bg-slate-900', 'text-white', 'border-transparent', 'shadow-md');
-                btn.classList.add('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
-                if (platform === 'lainnya') {
+            if (platform === 'noai') {
+                noAiMode = !noAiMode;
+                if (noAiMode) {
+                    // Reset standard platforms
+                    selectedPlatforms = ['noai'];
+                    ['chatgpt', 'gemini', 'claude', 'lainnya'].forEach(p => {
+                        const b = document.getElementById(`btn-${p}`);
+                        b.classList.remove('bg-slate-900', 'text-white', 'border-transparent', 'shadow-md');
+                        b.classList.add('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
+                    });
                     otherContainer.classList.add('hidden');
                     document.getElementById('other-ai-name').value = '';
+                    
+                    // Activate emerald styling on No-AI button
+                    btn.classList.add('bg-emerald-600', 'text-white', 'border-transparent', 'shadow-md');
+                    btn.classList.remove('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
+                    noAiNotice.classList.remove('hidden');
+                    
+                    // Apply visual overlays
+                    showNoAiOverlay(true);
+                } else {
+                    selectedPlatforms = [];
+                    btn.classList.remove('bg-emerald-600', 'text-white', 'border-transparent', 'shadow-md');
+                    btn.classList.add('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
+                    noAiNotice.classList.add('hidden');
+                    showNoAiOverlay(false);
                 }
             } else {
-                selectedPlatforms.push(platform);
-                btn.classList.add('bg-slate-900', 'text-white', 'border-transparent', 'shadow-md');
-                btn.classList.remove('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
-                if (platform === 'lainnya') {
-                    otherContainer.classList.remove('hidden');
+                // If standard platform is clicked, automatically disable No-AI mode
+                if (noAiMode) {
+                    noAiMode = false;
+                    const btnNoAi = document.getElementById('btn-noai');
+                    btnNoAi.classList.remove('bg-emerald-600', 'text-white', 'border-transparent', 'shadow-md');
+                    btnNoAi.classList.add('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
+                    noAiNotice.classList.add('hidden');
+                    showNoAiOverlay(false);
+                    selectedPlatforms = [];
+                }
+
+                if (selectedPlatforms.includes(platform)) {
+                    selectedPlatforms = selectedPlatforms.filter(p => p !== platform);
+                    btn.classList.remove('bg-slate-900', 'text-white', 'border-transparent', 'shadow-md');
+                    btn.classList.add('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
+                    if (platform === 'lainnya') {
+                        otherContainer.classList.add('hidden');
+                        document.getElementById('other-ai-name').value = '';
+                    }
+                } else {
+                    selectedPlatforms.push(platform);
+                    btn.classList.add('bg-slate-900', 'text-white', 'border-transparent', 'shadow-md');
+                    btn.classList.remove('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
+                    if (platform === 'lainnya') {
+                        otherContainer.classList.remove('hidden');
+                    }
                 }
             }
             updateIntegrityScore();
+        }
+
+        // Helper to enable/disable No-AI inputs overlay
+        function showNoAiOverlay(isActive) {
+            const overlays = ['overlay-claims', 'overlay-sources', 'overlay-reflection'];
+            overlays.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (isActive) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
         }
 
         function togglePurposeOther() {
@@ -721,86 +827,96 @@
 
         function updateIntegrityScore() {
             let score = 0;
-            
-            // 1. Platform validation
             const rulePlatform = document.getElementById('rule-platform');
-            let isPlatformValid = false;
-            if (selectedPlatforms.length > 0) {
-                if (selectedPlatforms.includes('lainnya')) {
-                    const otherName = document.getElementById('other-ai-name').value.trim();
-                    if (otherName.length > 1) {
-                        isPlatformValid = true;
-                    }
-                } else {
-                    isPlatformValid = true;
-                }
-            }
-
-            if (isPlatformValid) {
-                score += 20;
-                setRuleStatus(rulePlatform, true);
-            } else {
-                setRuleStatus(rulePlatform, false);
-            }
-
-            // 2. Purpose validation (with dynamic other text area checked)
-            const checkedPurposes = document.querySelectorAll('#purpose-container input[type="checkbox"]:checked');
             const rulePurpose = document.getElementById('rule-purpose');
-            let isPurposeValid = false;
-            
-            if (checkedPurposes.length > 0) {
-                let standardChecked = false;
-                const purposes = document.querySelectorAll('#purpose-container input[type="checkbox"]');
-                purposes.forEach(p => {
-                    if (p.checked && p.id !== 'purpose-other-checkbox') {
-                        standardChecked = true;
-                    }
-                });
-                const otherChecked = document.getElementById('purpose-other-checkbox').checked;
-                const otherVal = document.getElementById('purpose-other-text').value.trim();
-                
-                if (standardChecked || (otherChecked && otherVal.length > 1)) {
-                    isPurposeValid = true;
-                }
-            }
-
-            if (isPurposeValid) {
-                score += 20;
-                setRuleStatus(rulePurpose, true);
-            } else {
-                setRuleStatus(rulePurpose, false);
-            }
-
-            // 3. Claims validation
-            const claimsVal = document.getElementById('claims-text').value.trim();
             const ruleClaim = document.getElementById('rule-claim');
-            if (claimsVal.length > 8) {
-                score += 20;
-                setRuleStatus(ruleClaim, true);
-            } else {
-                setRuleStatus(ruleClaim, false);
-            }
-
-            // 4. Sources validation
-            const checkedSources = document.querySelectorAll('#sources-container input[type="checkbox"]:checked');
-            const referenceLinksVal = document.getElementById('reference-links').value.trim();
             const ruleSource = document.getElementById('rule-source');
-            
-            if (checkedSources.length > 0 && referenceLinksVal.length > 5) {
-                score += 20;
-                setRuleStatus(ruleSource, true);
-            } else {
-                setRuleStatus(ruleSource, false);
-            }
-
-            // 5. Reflection validation
-            const reflectionVal = document.getElementById('reflection-text').value.trim();
             const ruleReflection = document.getElementById('rule-reflection');
-            if (reflectionVal.length > 12) {
-                score += 20;
+
+            if (noAiMode) {
+                // If No-AI, score is automatically set to 100%
+                score = 100;
+                setRuleStatus(rulePlatform, true);
+                setRuleStatus(rulePurpose, true);
+                setRuleStatus(ruleClaim, true);
+                setRuleStatus(ruleSource, true);
                 setRuleStatus(ruleReflection, true);
             } else {
-                setRuleStatus(ruleReflection, false);
+                // 1. Platform validation
+                let isPlatformValid = false;
+                if (selectedPlatforms.length > 0) {
+                    if (selectedPlatforms.includes('lainnya')) {
+                        const otherName = document.getElementById('other-ai-name').value.trim();
+                        if (otherName.length > 1) {
+                            isPlatformValid = true;
+                        }
+                    } else {
+                        isPlatformValid = true;
+                    }
+                }
+
+                if (isPlatformValid) {
+                    score += 20;
+                    setRuleStatus(rulePlatform, true);
+                } else {
+                    setRuleStatus(rulePlatform, false);
+                }
+
+                // 2. Purpose validation
+                const checkedPurposes = document.querySelectorAll('#purpose-container input[type="checkbox"]:checked');
+                let isPurposeValid = false;
+                
+                if (checkedPurposes.length > 0) {
+                    let standardChecked = false;
+                    const purposes = document.querySelectorAll('#purpose-container input[type="checkbox"]');
+                    purposes.forEach(p => {
+                        if (p.checked && p.id !== 'purpose-other-checkbox') {
+                            standardChecked = true;
+                        }
+                    });
+                    const otherChecked = document.getElementById('purpose-other-checkbox').checked;
+                    const otherVal = document.getElementById('purpose-other-text').value.trim();
+                    
+                    if (standardChecked || (otherChecked && otherVal.length > 1)) {
+                        isPurposeValid = true;
+                    }
+                }
+
+                if (isPurposeValid) {
+                    score += 20;
+                    setRuleStatus(rulePurpose, true);
+                } else {
+                    setRuleStatus(rulePurpose, false);
+                }
+
+                // 3. Claims validation
+                const claimsVal = document.getElementById('claims-text').value.trim();
+                if (claimsVal.length > 8) {
+                    score += 20;
+                    setRuleStatus(ruleClaim, true);
+                } else {
+                    setRuleStatus(ruleClaim, false);
+                }
+
+                // 4. Sources validation
+                const checkedSources = document.querySelectorAll('#sources-container input[type="checkbox"]:checked');
+                const referenceLinksVal = document.getElementById('reference-links').value.trim();
+                
+                if (checkedSources.length > 0 && referenceLinksVal.length > 5) {
+                    score += 20;
+                    setRuleStatus(ruleSource, true);
+                } else {
+                    setRuleStatus(ruleSource, false);
+                }
+
+                // 5. Reflection validation
+                const reflectionVal = document.getElementById('reflection-text').value.trim();
+                if (reflectionVal.length > 12) {
+                    score += 20;
+                    setRuleStatus(ruleReflection, true);
+                } else {
+                    setRuleStatus(ruleReflection, false);
+                }
             }
 
             integrityScore = score;
@@ -884,18 +1000,18 @@
         }
 
         function submitAssignment() {
-            if (selectedPlatforms.length === 0) {
-                showToast("fa-solid fa-circle-exclamation", "Pilih minimal 1 jenis Platform AI yang dipakai!", "text-red-400");
+            if (!noAiMode && selectedPlatforms.length === 0) {
+                showToast("fa-solid fa-circle-exclamation", "Pilih platform AI atau gunakan opsi Tanpa AI!", "text-red-400");
                 return;
             }
-            if (selectedPlatforms.includes('lainnya') && document.getElementById('other-ai-name').value.trim().length <= 1) {
+            if (!noAiMode && selectedPlatforms.includes('lainnya') && document.getElementById('other-ai-name').value.trim().length <= 1) {
                 showToast("fa-solid fa-pen-to-square", "Sebutkan nama AI Lainnya yang Anda gunakan!", "text-red-400");
                 return;
             }
             
             const otherChecked = document.getElementById('purpose-other-checkbox').checked;
             const otherVal = document.getElementById('purpose-other-text').value.trim();
-            if (otherChecked && otherVal.length <= 1) {
+            if (!noAiMode && otherChecked && otherVal.length <= 1) {
                 showToast("fa-solid fa-pen-nib", "Isi kolom tujuan penggunaan lainnya secara manual!", "text-red-400");
                 return;
             }
